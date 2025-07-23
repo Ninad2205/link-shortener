@@ -1,13 +1,22 @@
 const express = require('express');
+require('dotenv').config()
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const urlRoutes = require('./routes/urlRoutes');
 const app = express();
 const path = require("path");
-// Database connection
-mongoose.connect('mongodb://localhost/urlshortener', { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB connected'))
-  .catch((err) => console.log(err));
+
+
+mongoose.connect(process.env.DATABASE_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log("`Connected to MongoDB Atlas"))
+.catch((err) => console.error("MongoDB connection error:", err));
+
+
+
+
 
 app.set('views', path.join(__dirname, 'views'));
 // Middleware
