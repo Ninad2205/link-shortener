@@ -50,7 +50,7 @@ exports.createShortUrl = async (req, res) => {
         // Render the view with the newly created short URL
         res.render("index", {
             shortUrl: `https://ninad.at/${shortUrl}`, // Display shubh.at
-            actualLink: `http://localhost:5000/${shortUrl}`, // Actual redirect link
+            actualLink: `https://link-mint.vercel.app/${shortUrl}`, // Actual redirect link
             error: null,
         });
     } catch (err) {
